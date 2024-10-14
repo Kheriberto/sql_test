@@ -1,0 +1,79 @@
+// 3. Identifying Outliers in Track Completion Times
+
+// 3a. Business Question: Identify tracks (UUIDs) where the total time taken between the
+//     start and end steps is significantly higher or lower than the average time (e.g.,
+//     outliers).
+
+// Solution:
+// This is a tricky one. As observed in the first task, the data contains a significant
+// amount of tracks (UUIDs) with 0 seconds duration and some with 1 second duration. 
+// These by themselves can already be considered outliers, but in order to understand 
+// the outliers from a statistical standpoint I will use the Z-score method and 
+// standard deviation.
+
+WITH track_durations AS (
+    SELECT
+        UUID,
+        TIMESTAMPDIFF(SECOND, MIN(datetime), MAX(datetime)) AS total_duration
+    FROM (
+        SELECT UUID, datetime FROM test.tracks1
+        UNION ALL
+        SELECT UUID, datetime FROM test.tracks2
+    ) AS all_tracks
+    GROUP BY UUID
+),
+stats AS (
+    SELECT
+        AVG(total_duration) AS avg_duration,
+        STDDEV(total_duration) AS stddev_duration
+    FROM track_durations
+),
+outliers AS (
+    SELECT
+        td.UUID,
+        td.total_duration,
+        s.avg_duration,
+        s.stddev_duration,
+        ABS(td.total_duration - s.avg_duration) / s.stddev_duration AS z_score
+    FROM track_durations td
+    CROSS JOIN stats s
+)
+SELECT
+    UUID,
+    total_duration,
+    z_score
+FROM outliers
+WHERE z_score > 2
+ORDER BY z_score DESC;
+
+// In this query I am:
+// - Doing the same thing I did before and determine the track duration for each UUID
+//   and I name the table 'track_durations' (same as in the previous tasks).
+// - I calculate Mean and Standard Deviation of the durations and I name the table
+//   'stats'.
+// - Then I finally identify outliers by calculating the Z-score for each UUID and I
+//   call the table 'outliers'.
+// - I classify the Z-score greater than 2 (indicating more than two standard 
+//   deviations from the mean) is considered an outlier.
+// - I grab UUIDs with a Z-score greater than 2.
+
+// I am not sure how this date is collected or what is the nature of the tracks, I 
+// believe this is relevant information to make a more signficant analysis. But 
+// with the limited contect here are what I think could be the possible causes of 
+// the outliers:
+// - Some outliers could be due to server or network issues causing delays in the 
+//   logging of end steps.
+// - High durations may reflect users abandoning or pausing mid-process and 
+//   extremely low durations might indicate potential errors in the tracking system.
+// - Erros collecting data where there is missing or duplicate steps that might 
+//   lead to inaccurate duration calculations.
+
+// Based on these possiblee cause here are my recommendations to handle outliers:
+// Recommendations:
+// - Identify recurring outliers and check for specific sources or times associated 
+//   with anomalies. This could lead to identify and analyze patterns that can be 
+//   corrected.
+// - Improving logging process to capture intermediate steps, allowing for better 
+//   tracking of where delays occur.
+// - It could be wise to set up alerts if durations go beyond certain specific 
+//   amounts. This could help to respond quickly to potential issues.
