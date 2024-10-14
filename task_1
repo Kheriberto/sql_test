@@ -1,0 +1,80 @@
+// 1. Track Completion Time Analysis
+
+// 1a. Business Question: For each unique UUID (representing a track), calculate the total
+//     time taken between the start and end steps.
+
+// Solution:
+
+// To learn the duration of each track.
+
+WITH track_times AS (
+    SELECT
+        UUID,
+        MIN(datetime) AS start_time,
+        MAX(datetime) AS end_time
+    FROM (
+        SELECT UUID, datetime FROM test.tracks1
+        UNION ALL
+        SELECT UUID, datetime FROM test.tracks2
+    ) AS all_tracks
+    GROUP BY UUID
+)
+
+SELECT
+    UUID,
+    TIMESTAMPDIFF(SECOND, start_time, end_time) AS total_time
+FROM track_times
+ORDER BY total_time DESC;
+
+// This query results in a table with the total time per UUID, however there are 
+// several with 1 and 0 seconds total time. I want to understand what is the COUNT
+// of tracks with 0, 1 and > 1 time
+
+// To know the total count of tracks with 0, 1 and >1 second duration
+
+SELECT
+    CASE
+        WHEN TIMESTAMPDIFF(SECOND, start_time, end_time) = 0 THEN '0 seconds'
+        WHEN TIMESTAMPDIFF(SECOND, start_time, end_time) = 1 THEN '1 second'
+        ELSE '> 1 second'
+    END AS duration_category,
+    COUNT(*) AS count
+FROM track_times
+GROUP BY duration_category;
+
+// Using the 'track_times' table and the above query resulted in:
+// _____________________________
+// | duration category | count |
+// |-------------------|-------|
+// | > 1 second        | 251   |
+// | 0 seconds         | 12694 |
+// | 1 second          | 203   |
+// |___________________|_______|
+
+// This means that if the intention is to focus the analysis on track duration the
+// data that matters is only the 251 tracks that are longer than 1 second which 
+// represents almost 2% of the data. 
+
+// To know the average duration of the tracks that are larger than 1 second duration.
+
+WITH track_times AS (
+    SELECT
+        UUID,
+        TIMESTAMPDIFF(SECOND, MIN(datetime), MAX(datetime)) AS total_duration
+    FROM (
+        SELECT UUID, datetime FROM test.tracks1
+        UNION ALL
+        SELECT UUID, datetime FROM test.tracks2
+    ) AS combined_tracks
+    GROUP BY UUID
+)
+
+SELECT
+    AVG(total_duration_seconds) AS average_duration
+FROM track_times
+WHERE total_duration > 1;
+
+// The result of this query is 9.6 seconds. This means that:
+// - 1.9% of all the tracks have an average duration of 9.6 seconds.
+// - 1.6% of the tracks have a duration of 1 second.
+// - 96.5% have no duration at all.
