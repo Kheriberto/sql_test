@@ -1,0 +1,45 @@
+// 2. Identifying Incomplete Tracks
+
+// 2a. Business Question: Identify tracks (UUIDs) that do not have one or more steps in
+//     the table.
+
+// Solution
+
+// To get the list of tracks with either ns start time or end time
+
+WITH track_steps AS (
+    SELECT UUID,
+           COUNT(CASE WHEN source LIKE '%start%' THEN 1 END) AS start_count,
+           COUNT(CASE WHEN source LIKE '%end%' THEN 1 END) AS end_count
+    FROM (
+        SELECT UUID, source FROM test.tracks1
+        UNION ALL
+        SELECT UUID, source FROM test.tracks2
+    ) AS combined_tracks
+    GROUP BY UUID
+)
+
+SELECT UUID
+FROM track_steps
+WHERE start_count = 0 OR end_count = 0;
+
+// After counting the number of tracks that meet the conditions stated before we learn
+// that there are only 17 tracks with no start time or end time. These merely represent
+// 0.12% of the data.
+
+// Incomoplete tracks can lead to innacurate reporting and this can also deminish the 
+// quality of the data.
+
+// My recommendation:
+// - Track the errors by keeping a log of incomplete or inaccurate data.
+// - Create a validation check when logging the data to ensure each UUID has an start
+//   and an end step during data ingestion.
+// - Create an automtion that runs regular clean up process with aim to backfill or 
+//   remove if the data is not recoverable.
+
+// This las step can use a combination of different tools and coul look something like 
+// this:
+// - SQL detection process: identifies the UUIDs that experience incompleteness or 
+//   inaccuracy
+// - Python script that uses Pandas and SQLalchemy to attempt to save the errors if
+//   the data is recoverable or delete the incomplete data.
