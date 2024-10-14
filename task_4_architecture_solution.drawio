@@ -1,0 +1,164 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="-cwYqFLHYO8EB1LunAoG">
+    <mxGraphModel dx="1243" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="AWS Services" style="whiteSpace=wrap;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="8" y="194" width="124" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="End Users" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1690" y="138.25" width="125" height="474" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Data Processing" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;align=left;" parent="1" vertex="1">
+          <mxGeometry x="865" y="233" width="551" height="248" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Data Sources" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;align=left;" parent="1" vertex="1">
+          <mxGeometry x="8" y="241" width="711" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="MySQL RDS" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="30" y="340" width="129" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="MySQL RDS Staging" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="239" y="340" width="186" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="AWS Glue" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="549" y="340" width="145" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="Amazon S3" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="890" y="290" width="134" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="14" target="W8UtGaJbP76FA7MFr5DC-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Amazon Redshift" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="1171" y="346" width="221" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Dashboard" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="1715" y="200.25" width="75" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="Report" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="1715" y="346.25" width="75" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="Analytics" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+          <mxGeometry x="1715" y="480.25" width="75" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="ETL" style="curved=1;startArrow=none;endArrow=block;exitX=1;exitY=0.49;entryX=0;entryY=0.49;" parent="1" source="6" target="7" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0.63;exitY=0;entryX=0.41;entryY=0.01;" parent="1" source="7" target="12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="251" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="ETL" style="curved=1;startArrow=none;endArrow=block;exitX=0.68;exitY=0.01;entryX=0;entryY=0.18;" parent="1" source="12" target="13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="719" y="293" />
+              <mxPoint x="865" y="293" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="ETL" style="curved=1;startArrow=none;endArrow=block;exitX=1;exitY=0.5;entryX=0.13;entryY=-0.01;" parent="1" source="13" target="14" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1097" y="315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="ETL" style="curved=1;startArrow=none;endArrow=block;exitX=1;exitY=0.81;entryX=0;entryY=0.9;" parent="1" source="12" target="14" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="719" y="404" />
+              <mxPoint x="1097" y="404" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="Feedback" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0;exitY=0.95;entryX=0.56;entryY=0.01;" parent="1" source="15" target="12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1607" y="275" />
+              <mxPoint x="1512" y="275" />
+              <mxPoint x="1417" y="138" />
+              <mxPoint x="719" y="138" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="Feedback" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0;exitY=0.95;entryX=0.62;entryY=0.99;" parent="1" source="16" target="12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1607" y="450" />
+              <mxPoint x="1512" y="450" />
+              <mxPoint x="1417" y="512" />
+              <mxPoint x="719" y="512" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" value="Feedback" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0.2;exitY=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="17" target="12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1607" y="586" />
+              <mxPoint x="719" y="586" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="35" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.42;entryY=0.99;exitDx=0;exitDy=0;" parent="1" source="7" target="12" edge="1">
+          <mxGeometry x="-0.0015" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470" y="491" />
+            </Array>
+            <mxPoint x="353.9795918367347" y="477" as="sourcePoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.71;exitY=0.99;entryX=0.19;entryY=0.98;" parent="1" source="13" target="14" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1097" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-40" value="ETL" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="450" y="261" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-42" value="Scheduled incremental extraction from MySQL RDS (by day / hour)" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="34" y="394.5" width="126" height="32.5" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-43" value="Partition data by date, UUID, or other relevant fields to optimize query performance." style="text;whiteSpace=wrap;html=1;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1211" y="395" width="119" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-44" value="&lt;span style=&quot;background-color: initial; font-size: 9px;&quot;&gt;Set up live or scheduled data refreshes to keep visualizations up-to-date.&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1416" y="495" width="74" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-45" value="Use CloudWatch to monitor ETL jobs, track any anomalies in data load times or validation checks, and log errors." style="text;whiteSpace=wrap;html=1;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="870" y="436" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-46" value="Consider using AWS Glue Data Quality, which allows you to define rules and monitor them, alerting on anomalies or failures." style="text;whiteSpace=wrap;html=1;fontSize=9;align=right;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="233" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-47" value="Use a metadata-driven approach to handle data from multiple tables dynamically, reducing the need for manually updating ETL jobs with each new table." style="text;whiteSpace=wrap;html=1;fontSize=9;align=right;" vertex="1" parent="1">
+          <mxGeometry x="426" y="325.5" width="119" height="91.5" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-48" value="Use Amazon Redshift Spectrum to query data stored in Amazon S3 directly without loading it into Redshift. This is useful for ad-hoc analysis on archived data without impacting performance." style="text;whiteSpace=wrap;html=1;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="865" y="195.5" width="385" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="W8UtGaJbP76FA7MFr5DC-49" target="16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="W8UtGaJbP76FA7MFr5DC-49" target="15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="W8UtGaJbP76FA7MFr5DC-49" target="17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="W8UtGaJbP76FA7MFr5DC-49" value="Amazon Quicksight" style="rounded=1;arcSize=40;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="1480" y="345.5" width="140" height="49" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
